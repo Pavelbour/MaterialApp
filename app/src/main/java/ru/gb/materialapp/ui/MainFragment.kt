@@ -2,11 +2,13 @@ package ru.gb.materialapp.ui
 
 import android.os.Bundle
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.coroutineScope
 import coil.load
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import kotlinx.coroutines.flow.collect
 import ru.gb.materialapp.R
 import ru.gb.materialapp.databinding.FragmentMainBinding
@@ -31,8 +33,21 @@ class MainFragment: Fragment(R.layout.fragment_main) {
         val binding = FragmentMainBinding.bind(view)
 
         binding.mainFragmentTextInput.setEndIconOnClickListener {
-            Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_LONG).show()
+            EditDialog().show(parentFragmentManager, "tag")
         }
+
+        val behavior: BottomSheetBehavior<LinearLayout> = BottomSheetBehavior.from(binding.mainFragmentBottomSheet)
+        behavior.state = BottomSheetBehavior.STATE_COLLAPSED
+
+        behavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                TODO("Not yet implemented")
+            }
+        })
 
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
             viewModel.loading.collect {
