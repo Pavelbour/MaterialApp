@@ -30,6 +30,10 @@ class MainFragment: Fragment(R.layout.fragment_main) {
 
         val binding = FragmentMainBinding.bind(view)
 
+        binding.mainFragmentTextInput.setEndIconOnClickListener {
+            Toast.makeText(requireContext(), "Clicked", Toast.LENGTH_LONG).show()
+        }
+
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
             viewModel.loading.collect {
                 binding.mainFragmentProgress.visibility = if (it) View.VISIBLE else View.GONE
