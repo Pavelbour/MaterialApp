@@ -32,6 +32,12 @@ class MainFragment: Fragment(R.layout.fragment_main) {
 
         val binding = FragmentMainBinding.bind(view)
 
+        binding.mainFragmentBottomAppBar.setOnMenuItemClickListener {
+            when (it.itemId) {
+                else -> true
+            }
+        }
+
         binding.mainFragmentTextInput.setEndIconOnClickListener {
             EditDialog().show(parentFragmentManager, "tag")
         }
@@ -41,11 +47,11 @@ class MainFragment: Fragment(R.layout.fragment_main) {
 
         behavior.addBottomSheetCallback(object: BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
-                TODO("Not yet implemented")
+
             }
 
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                TODO("Not yet implemented")
+
             }
         })
 

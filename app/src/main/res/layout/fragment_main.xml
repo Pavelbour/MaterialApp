@@ -91,4 +91,17 @@
         android:visibility="gone"
         tools:visibility="visible"/>
 
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/main_fragment_bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/menu_bottom_appbar"
+        app:backgroundTint="@color/design_default_color_primary"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/main_fragment_bottom_app_bar"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
