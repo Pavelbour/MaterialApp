@@ -20,12 +20,17 @@ class MainViewModel(private val repository: NasaRepository): ViewModel() {
     private val _error: MutableSharedFlow<String> = MutableSharedFlow()
     val error: Flow<String> = _error
 
+    private val _explanation: MutableSharedFlow<String> = MutableSharedFlow()
+    val explanation: Flow<String> = _explanation
+
     fun requestPictureOfTheDay() {
         viewModelScope.launch {
             _loading.emit(true)
             try {
                 val url = repository.pictureOfTheDay().url
                 _image.emit(url)
+                val explanation = repository.pictureOfTheDay().explanation
+                _explanation.emit(explanation)
             } catch (exc: IOException) {
                 _error.emit("Network error")
             }

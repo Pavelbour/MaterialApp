@@ -74,5 +74,13 @@ class MainFragment: Fragment(R.layout.fragment_main) {
                 }
             }
         }
+
+        viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
+            viewModel.explanation.collect { explanation ->
+                explanation.let {
+                    binding.mainFragmentImageDescription.text = it
+                }
+            }
+        }
     }
 }
