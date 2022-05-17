@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="One"/>
+
+            <com.google.android.material.chip.Chip
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Two"/>
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/main_fragment_text_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+            app:counterEnabled="true"
+            app:counterMaxLength="7"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:endIconMode="custom"
+            app:endIconDrawable="@drawable/ic_baseline_10k_24"
+            app:endIconCheckable="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageView
+            android:id="@+id/main_fragment_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/main_fragment_image_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Description"/>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/main_fragment_bottom_sheet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_behavior="@string/bottom_sheet_behavior"
+                app:behavior_peekHeight="50dp"
+                app:behavior_hideable="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Header"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/main_fragment_bottom_sheet_text_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="7"
+                    app:boxCornerRadiusTopEnd="20dp"
+                    app:endIconMode="custom"
+                    app:endIconDrawable="@drawable/ic_baseline_10k_24"
+                    app:endIconCheckable="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Button"/>
+
+            </LinearLayout>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/main_fragment_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/main_fragment_bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/menu_bottom_appbar"
+        app:backgroundTint="@color/design_default_color_primary"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_anchor="@id/main_fragment_bottom_app_bar"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
