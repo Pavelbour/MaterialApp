@@ -54,6 +54,7 @@
             android:id="@+id/main_fragment_image_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/main_fragment_description"
             tools:text="Description"/>
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout

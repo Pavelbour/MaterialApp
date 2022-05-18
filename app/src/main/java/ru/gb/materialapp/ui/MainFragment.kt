@@ -34,8 +34,15 @@ class MainFragment: Fragment(R.layout.fragment_main) {
 
         binding.mainFragmentBottomAppBar.setOnMenuItemClickListener {
             when (it.itemId) {
-                else -> true
+                R.id.menu_bottom_appbar_settings -> {
+                    activity?.supportFragmentManager?.beginTransaction()
+                        ?.replace(R.id.main_activity_fragment_container,
+                        SettingsFragment())
+                        ?.addToBackStack("")
+                        ?.commit()
+                }
             }
+            true
         }
 
         binding.mainFragmentTextInput.setEndIconOnClickListener {

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="main_fragment_description">
+        <item name="android:textSize">@dimen/description_text_size</item>
+        <item name="android:background">?attr/description_text_background</item>
+        <item name="android:textColor">?attr/description_text_color</item>
+    </style>
+</resources>
