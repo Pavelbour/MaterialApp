@@ -41,6 +41,20 @@ class MainFragment: Fragment(R.layout.fragment_main) {
                         ?.addToBackStack("")
                         ?.commit()
                 }
+                R.id.menu_bottom_appbar_home -> {
+                    activity?.supportFragmentManager?.beginTransaction()
+                        ?.replace(R.id.main_activity_fragment_container,
+                        MainFragment())
+                        ?.addToBackStack("")
+                        ?.commit()
+                }
+                R.id.menu_bottom_appbar_wikipedia -> {
+                    activity?.supportFragmentManager?.beginTransaction()
+                        ?.replace(R.id.main_activity_fragment_container,
+                        WikiFragment())
+                        ?.addToBackStack("")
+                        ?.commit()
+                }
             }
             true
         }
