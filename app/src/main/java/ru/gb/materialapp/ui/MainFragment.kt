@@ -33,7 +33,14 @@ class MainFragment: Fragment(R.layout.fragment_main) {
         val binding = FragmentMainBinding.bind(view)
 
         binding.mainFragmentTextInput.setEndIconOnClickListener {
-            EditDialog().show(parentFragmentManager, "tag")
+            savedInstanceState?.putString("search", it.toString())
+
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.main_activity_fragment_container,
+                WikiFragment())
+                ?.addToBackStack("")
+                ?.commit()
+//            EditDialog().show(parentFragmentManager, "tag")
         }
 
         val behavior: BottomSheetBehavior<LinearLayout> = BottomSheetBehavior.from(binding.mainFragmentBottomSheet)
