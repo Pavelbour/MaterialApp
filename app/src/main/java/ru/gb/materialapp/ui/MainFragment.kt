@@ -32,33 +32,6 @@ class MainFragment: Fragment(R.layout.fragment_main) {
 
         val binding = FragmentMainBinding.bind(view)
 
-        binding.mainFragmentBottomAppBar.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.menu_bottom_appbar_settings -> {
-                    activity?.supportFragmentManager?.beginTransaction()
-                        ?.replace(R.id.main_activity_fragment_container,
-                        SettingsFragment())
-                        ?.addToBackStack("")
-                        ?.commit()
-                }
-                R.id.menu_bottom_appbar_home -> {
-                    activity?.supportFragmentManager?.beginTransaction()
-                        ?.replace(R.id.main_activity_fragment_container,
-                        MainFragment())
-                        ?.addToBackStack("")
-                        ?.commit()
-                }
-                R.id.menu_bottom_appbar_wikipedia -> {
-                    activity?.supportFragmentManager?.beginTransaction()
-                        ?.replace(R.id.main_activity_fragment_container,
-                        WikiFragment())
-                        ?.addToBackStack("")
-                        ?.commit()
-                }
-            }
-            true
-        }
-
         binding.mainFragmentTextInput.setEndIconOnClickListener {
             EditDialog().show(parentFragmentManager, "tag")
         }
