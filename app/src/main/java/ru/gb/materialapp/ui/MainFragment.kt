@@ -32,21 +32,15 @@ class MainFragment: Fragment(R.layout.fragment_main) {
 
         val binding = FragmentMainBinding.bind(view)
 
-        binding.mainFragmentBottomAppBar.setOnMenuItemClickListener {
-            when (it.itemId) {
-                R.id.menu_bottom_appbar_settings -> {
-                    activity?.supportFragmentManager?.beginTransaction()
-                        ?.replace(R.id.main_activity_fragment_container,
-                        SettingsFragment())
-                        ?.addToBackStack("")
-                        ?.commit()
-                }
-            }
-            true
-        }
-
         binding.mainFragmentTextInput.setEndIconOnClickListener {
-            EditDialog().show(parentFragmentManager, "tag")
+            savedInstanceState?.putString("search", it.toString())
+
+            activity?.supportFragmentManager?.beginTransaction()
+                ?.replace(R.id.main_activity_fragment_container,
+                WikiFragment())
+                ?.addToBackStack("")
+                ?.commit()
+//            EditDialog().show(parentFragmentManager, "tag")
         }
 
         val behavior: BottomSheetBehavior<LinearLayout> = BottomSheetBehavior.from(binding.mainFragmentBottomSheet)

@@ -33,10 +33,9 @@
             android:layout_margin="16dp"
             style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
             app:counterEnabled="true"
-            app:counterMaxLength="7"
             app:boxCornerRadiusTopEnd="20dp"
             app:endIconMode="custom"
-            app:endIconDrawable="@drawable/ic_baseline_10k_24"
+            app:endIconDrawable="@drawable/ic_baseline_search_24"
             app:endIconCheckable="true">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -86,7 +85,7 @@
                     app:counterMaxLength="7"
                     app:boxCornerRadiusTopEnd="20dp"
                     app:endIconMode="custom"
-                    app:endIconDrawable="@drawable/ic_baseline_10k_24"
+                    app:endIconDrawable="@drawable/ic_baseline_search_24"
                     app:endIconCheckable="true">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -113,18 +112,5 @@
         android:layout_gravity="center"
         android:visibility="gone"
         tools:visibility="visible"/>
-
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/main_fragment_bottom_app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:menu="@menu/menu_bottom_appbar"
-        app:backgroundTint="@color/design_default_color_primary"/>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_anchor="@id/main_fragment_bottom_app_bar"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
