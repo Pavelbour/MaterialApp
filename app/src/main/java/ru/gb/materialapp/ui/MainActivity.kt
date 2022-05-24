@@ -43,6 +43,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                         .commit()
                 }
                 R.id.menu_bottom_appbar_wikipedia -> {
+                    val searchViewModel by lazy {
+                        ViewModelProvider(this).get(SearchViewModel::class.java)
+                    }
+                    searchViewModel.setSearch("")
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.main_activity_fragment_container,
                             WikiFragment())
