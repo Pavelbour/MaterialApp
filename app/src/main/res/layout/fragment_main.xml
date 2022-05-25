@@ -30,6 +30,10 @@
 
             </com.google.android.material.chip.ChipGroup>
 
+            <androidx.constraintlayout.motion.widget.MotionLayout
+                android:id="@+id/main_fragment_motion_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/main_fragment_text_input"
                 style="@style/Widget.Material3.AutoCompleteTextView.OutlinedBox"
@@ -40,7 +44,8 @@
                 app:counterEnabled="true"
                 app:endIconCheckable="true"
                 app:endIconDrawable="@drawable/ic_baseline_search_24"
-                app:endIconMode="custom">
+                app:endIconMode="custom"
+                android:translationX="-500dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/main_fragment_text_input_field"
@@ -48,6 +53,7 @@
                     android:layout_height="wrap_content" />
 
             </com.google.android.material.textfield.TextInputLayout>
+            </androidx.constraintlayout.motion.widget.MotionLayout>
 
             <ImageView
                 android:id="@+id/main_fragment_image"

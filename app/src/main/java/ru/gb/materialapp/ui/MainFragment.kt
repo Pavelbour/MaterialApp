@@ -1,5 +1,6 @@
 package ru.gb.materialapp.ui
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -38,6 +39,11 @@ class MainFragment: Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = FragmentMainBinding.bind(view)
+
+        ObjectAnimator.ofFloat(binding.mainFragmentTextInput, "translationX", 0f).apply {
+            duration = 3000L
+            start()
+        }
 
         binding.mainFragmentTextInput.setEndIconOnClickListener {
             searchViewModel.setSearch(binding.mainFragmentTextInputField.text.toString())
