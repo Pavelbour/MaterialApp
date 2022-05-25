@@ -1,11 +1,15 @@
 package ru.gb.materialapp.ui
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.coroutineScope
 import coil.load
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -17,6 +21,10 @@ import ru.gb.materialapp.domain.NasaRepositoryImpl
 class MainFragment: Fragment(R.layout.fragment_main) {
     private val viewModel: MainViewModel by viewModels {
         MainViewModelFactory(NasaRepositoryImpl())
+    }
+
+    private val searchViewModel by lazy {
+        ViewModelProvider(requireActivity()).get(SearchViewModel::class.java)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +40,13 @@ class MainFragment: Fragment(R.layout.fragment_main) {
 
         val binding = FragmentMainBinding.bind(view)
 
+        ObjectAnimator.ofFloat(binding.mainFragmentTextInput, "translationX", 0f).apply {
+            duration = 3000L
+            start()
+        }
+
         binding.mainFragmentTextInput.setEndIconOnClickListener {
-            savedInstanceState?.putString("search", it.toString())
+            searchViewModel.setSearch(binding.mainFragmentTextInputField.text.toString())
 
             activity?.supportFragmentManager?.beginTransaction()
                 ?.replace(R.id.main_activity_fragment_container,
