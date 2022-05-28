@@ -3,22 +3,25 @@ package ru.gb.materialapp.ui
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View
-import android.widget.EditText
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.coroutineScope
 import coil.load
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import kotlinx.coroutines.flow.collect
 import ru.gb.materialapp.R
 import ru.gb.materialapp.databinding.FragmentMainBinding
 import ru.gb.materialapp.domain.NasaRepositoryImpl
 
 class MainFragment: Fragment(R.layout.fragment_main) {
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
+
+    private var isDescriptionVisible = false
+
     private val viewModel: MainViewModel by viewModels {
         MainViewModelFactory(NasaRepositoryImpl())
     }
@@ -38,7 +41,9 @@ class MainFragment: Fragment(R.layout.fragment_main) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = FragmentMainBinding.bind(view)
+        _binding = FragmentMainBinding.bind(view)
+
+        binding.mainFragmentImageDescription.height = 0
 
         ObjectAnimator.ofFloat(binding.mainFragmentTextInput, "translationX", 0f).apply {
             duration = 3000L
@@ -53,7 +58,6 @@ class MainFragment: Fragment(R.layout.fragment_main) {
                 WikiFragment())
                 ?.addToBackStack("")
                 ?.commit()
-//            EditDialog().show(parentFragmentManager, "tag")
         }
 
         val behavior: BottomSheetBehavior<LinearLayout> = BottomSheetBehavior.from(binding.mainFragmentBottomSheet)
@@ -68,6 +72,16 @@ class MainFragment: Fragment(R.layout.fragment_main) {
 
             }
         })
+
+        binding.mainFragmentShowDescription.setOnClickListener {
+            this.isDescriptionVisible = !this.isDescriptionVisible
+
+            if (this.isDescriptionVisible) {
+                showDescription()
+            } else {
+                hideDescription()
+            }
+        }
 
         viewLifecycleOwner.lifecycle.coroutineScope.launchWhenStarted {
             viewModel.loading.collect {
@@ -95,6 +109,22 @@ class MainFragment: Fragment(R.layout.fragment_main) {
                     binding.mainFragmentImageDescription.text = it
                 }
             }
+        }
+    }
+
+    private fun hideDescription() {
+        ObjectAnimator.ofInt(binding.mainFragmentImageDescription, "height", 0).apply {
+            duration = 600L
+            start()
+        }
+        binding.mainFragmentShowDescription.text = "Show Description"
+    }
+
+    private fun showDescription() {
+        binding.mainFragmentShowDescription.text = "Hide Description"
+        ObjectAnimator.ofInt(binding.mainFragmentImageDescription, "height", 1000).apply {
+            duration = 600L
+            start()
         }
     }
 }
